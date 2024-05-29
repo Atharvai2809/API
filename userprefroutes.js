@@ -62,6 +62,10 @@ router.patch('/userPrefs/update/:id/preferences', async (req, res) => {
                 userPref.preferences.keyValues[prefIndex].value = value;
                 userPref.preferences.keyValues[prefIndex].Type = Type;
             }
+            else
+            {
+                userPref.preferences.keyValues.push({key,value})
+            }
         }
 
         await userPref.save();
@@ -85,6 +89,7 @@ router.delete('/userPrefs/delete/:userId/preferences/:key', async (req, res) => 
         if (prefIndex === -1) {
             return res.status(404).send({ error: 'Preference key not found!' });
         }
+        
 
         userPref.preferences.keyValues.splice(prefIndex, 1); // Remove the specific key-value pair
 
