@@ -71,7 +71,7 @@ router.patch('/userPrefs/update/:id/preferences', async (req, res) => {
     }
 });
 
-// Delete a user preference by ID
+// Delete a  single preference of a UserPreference by ID
 router.delete('/userPrefs/delete/:userId/preferences/:key', async (req, res) => {
     const { userId, key } = req.params;
 
